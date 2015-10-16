@@ -1,0 +1,21 @@
+<!doctype html>
+{%load staticfiles %}
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title>ReferrerKiller demo</title>
+	 <script src="{% static "js/referrer-killer.js"%}"></script>
+</head>
+<body>
+    <center>
+    {% for image_url in image_urls %}
+        <div id="item{{forloop.counter}}" width="500" height="500"></div>
+    {% endfor %}
+    <center>
+    <script>
+    {% for image_url in image_urls %}
+        document.getElementById("item{{forloop.counter}}").innerHTML = ReferrerKiller.imageHtml("{{image_url}}");
+    {% endfor %}
+    </script>
+</body>
+</html>

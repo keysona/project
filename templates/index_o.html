@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>前端</title>
+
+		<!-- Google web fonts -->
+		<link href="http://fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700" rel='stylesheet' />
+
+		<!-- The main CSS file -->
+
+		<link href="{%static "assets/css/style.css"%}" rel="stylesheet" />
+        <!--图片滑动-->
+        
+        <script src="{% static "js/jquery-1.4.4.min.js"%}"></script>
+	        
+		<script src="{% static  "js/slides.min.jquery.js"%}"></script>
+        <script>
+            $(function(){
+                $('#slides').slides({
+                    preload: true,
+                    preloadImage: 'img/loading.gif',
+                    play: 5000,
+                    pause: 2500,
+                    hoverPause: true
+                });
+            });
+	</script>
+	<!--<link rel="stylesheet" href="{% static "css/global.css"%}">-->
+   <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="{% static "assets/js/jquery.knob.js"%}"></script>-->
+     <!--图片滑动-->
+	</head>
+
+	<body>
+    <!--图片滑动-->
+        <div id="container">
+            <div id="example">
+                <div id="slides">
+                    <div class="slides_container">
+		        
+                        <a href="#1">
+			
+			<img src="{% static "images/arro1.jpg"%}" width="570" height="270"></a>
+                        <a href="#1"><img src="{% static "images/arro2.jpg"%}" width="570" height="270"></a>
+                        <a href="#1"><img src="{% static "images/arro3.jpg"%}" width="570" height="270"></a>
+                        <a href="#1"><img src="{% static "images/arro4.jpg"%}" width="570" height="270"></a>
+                    </div>
+                    <a href="#" class="prev"><img src="{% static "img/arrow-prev.png"%}" width="24" height="43" alt="Arrow Prev"></a>
+                    <a href="#" class="next"><img src="{% static "img/arrow-next.png"%}" width="24" height="43" alt="Arrow Next"></a>
+                </div>
+                <img src="{% static "img/example-frame.png"%}" width="739" height="341" alt="Example Frame" id="frame">
+            </div>
+        </div>
+	<!--图片滑动-->
+		<form id="upload" method="post" action="/file/test/" enctype="multipart/form-data">
+			<div id="drop">
+				Drop Here
+				{% csrf_token %}
+				{{form}}
+			</div>
+
+			<ul>
+				<!-- The file uploads will be shown here -->
+			</ul>
+		</form>   
+             
+		<!-- JavaScript Includes -->
+        <!--显示第几张图片的-->
+		<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>-->
+		<script src="{% static "assets/js/jquery.knob.js"%}"></script>
+
+		<!-- jQuery File Upload Dependencies -->
+		<script src="{% static "assets/js/jquery.ui.widget.js"%}"></script>
+		<script src="{%static "assets/js/jquery.iframe-transport.js"%}"></script>
+		<script src="{% static "assets/js/jquery.fileupload.js"%}"
+		></script>
+		
+		<!-- Our main JS file -->
+		<script src="{%static "assets/js/script.js"%}"></script>
+
+	</body>
+</html>
