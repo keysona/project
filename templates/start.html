@@ -14,11 +14,12 @@ iframe{
 </style>
 <script>		               
     $(function(){
-    $("#a").val('');
+   // $("#a").val('');
+    $("label").remove();
     $("#form_id").submit(function(){
-    $(".item").remove();
+   // $(".item").remove();
    // $("#resultscript").html('');
-    $("#find").remove();
+   // $("#find").remove();
     $("#imgdiv").prepend("<h3 id='find'>Find pirture</h3>");
     var data = new FormData($('#form_id').get(0));
                 $.ajax({
@@ -94,7 +95,7 @@ iframe{
 	</a> 
 	<input type = "submit" value="Post" style="display:none"/>
 					                    </form>
-<div id="imgdiv"><a href="http://www.baidu.com"><img id="imgShow"/></a></div>
+<div id="imgdiv"><img id="imgShow"/></div>
 <div id="resultcontainer"></div>
 </center>
 								    </body>
