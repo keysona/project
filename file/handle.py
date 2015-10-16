@@ -10,7 +10,7 @@ def handle_upload_file(f):
     for chunk in f.chunks():
 	fobj.write(chunk)
     fobj.close()
-    conn = db.connect(host='localhost',user='root',passwd='123',db='test2')
+    conn = db.connect(host='localhost',user='root',passwd='dg123321',db='project')
     cur = conn.cursor()
     cd = ColorDescriptor((8, 12, 3))
     cur.execute('select url,hist from image') 
