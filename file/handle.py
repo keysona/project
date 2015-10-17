@@ -17,6 +17,7 @@ def handle_upload_file(f):
     a = cur.fetchall()
     img1 = cv2.imread('test.file')
     feature = cd.describe(img1) 
+    print type(feature)
     result = {}
     for i in range(len(a)):
         hist = a[i][5].split(' ')
