@@ -7,78 +7,15 @@
 <script src="{%static "js/referrer-killer.js"%}"></script>
 <script src="{%static "js/uploadPreview.min.js"%}"></script>
 <script src="{%static "js/jquery.blockUI.js"%}"></script>
+<script src="{%static "js/main.js"%}"></script>
 <style>
 iframe{  
    pointer-events:none; 
    }
+.imgbox {margin:0 auto; position:relative; }
+.text { height:auto; background-color:#000;opacity:0.7; position:absolute; left:0px; bottom:0px; }
+.imgtext { height:auto; float:left; color:#fff; font-size:12px; line-height:200%;display:none }
 </style>
-<script>		               
-    $(function(){
-   // $("#a").val('');
-    $("label").remove();
-    $("#form_id").submit(function(){
-   // $(".item").remove();
-   // $("#resultscript").html('');
-   // $("#find").remove();
-    $("#imgdiv").prepend("<h3 id='find'>Find pirture</h3>");
-    var data = new FormData($('#form_id').get(0));
-                $.ajax({
-                    type:"POST",
-                    url: "/file/upload/",
-                    data : data,
-                    cache: false,
-                    contentType: false,
-                    processData: false,
-		    beforeSend:function(){
-		         $.blockUI({ 
-			 message: '<div>正在查询...请稍候</div>', 
-			 css: { 
-			 border: 'none', 
-			 padding: '15px', 
-			 backgroundColor: '#000', 
-			 'font-size':'25px',
-			 'border-radius':'25px',
-			 '-webkit-border-radius': '25px', 
-			 '-moz-border-radius': '25px', 
-			 opacity: .5, 
-			 color: '#fff' 
-			 } });
-		    },
-                    success: function(data){
-		        $.unblockUI
-                        var tempdiv='';
-			var tempscript='';
-			$.each(data,function(index,content){
-				    tempdiv += "<div id = '"+content["name"] +"' class='item'"+' onclick="'+"window.location.href='"+content["url"]+"';return false"+'"></div>';
-			    tempscript += "document.getElementById('"+content["name"]+"').innerHTML = ReferrerKiller.imageHtml('"+content["url"]+"');";
-			});
-                        $("#resultcontainer").html(tempdiv);
-		        $("#resultcontainer").prepend("<h3 id='theresult'>The results</h3>");
-			    
-			    $("center").nextAll().remove();
-			    $("body").append($("<script />", {
-			      html: tempscript
-			      }));
-                    },
-                    failure: function(){
-                        $(this).addClass("error");
-                    }
-                });
-                return false;
-    });
-    $(":file").change(function(){
-	var file = this.files[0];
-        var name = file.name;
-        var size = file.size;
-    	var type = file.type;
-        $("#a").val(name);
-        if(size > 10000){
-            $("#form_id").trigger("submit");
-        }
-    });
-
-});
-</script>
 <script>
        window.onload = function () { 
                    new uploadPreview({ UpBtn: "id_file", DivShow: "imgdiv", ImgShow: "imgShow" });
