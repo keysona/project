@@ -6,7 +6,7 @@
     $(".item").remove();
     $("#resultscript").html('');
     $("#find").remove();
-    $("#imgdiv").prepend("<h3 id='find'>Find pirture</h3>");
+    $("#imgdiv").prepend("<h3 id='find'>Find picture</h3>");
     var data = new FormData($('#form_id').get(0));
                 $.ajax({
                     type:"POST",

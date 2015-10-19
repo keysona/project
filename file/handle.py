@@ -27,7 +27,7 @@ def handle_upload_file(f):
 	   fobj.write(chunk)
     fobj.close()
     #初始化工作
-    conn = db.connect(host='localhost',user='root',passwd='123',db='test2')
+    conn = db.connect(host='localhost',user='root',passwd='dg123321',db='project')
     cur = conn.cursor()
     cd = ColorDescriptor((8, 12, 3))
     rows = cur.execute('select url,width,height,time,type,hist from image') 
